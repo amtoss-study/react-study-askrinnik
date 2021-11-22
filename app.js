@@ -15,16 +15,16 @@ const initUsers =
     ];
 
 
-const UserControl = ({ item }) => (
+const UserControl = ({ user }) => (
     <tr>
-        <td>{item.firstName}</td>
-        <td>{item.lastName}</td>
-        <td>{item.phone}</td>
+        <td>{user.firstName}</td>
+        <td>{user.lastName}</td>
+        <td>{user.phone}</td>
     </tr>
 );
 
 
-const UserList = ({ users }) => (
+const UserList = ({ userList }) => (
     <div>
         <table>
             <thead>
@@ -36,30 +36,30 @@ const UserList = ({ users }) => (
             </thead>
             <tbody>
                 {
-                    users.map(item => <UserControl key={item.id} item={item} />)
+                    userList.map(item => <UserControl key={item.id} user={item} />)
                 }
             </tbody>
         </table>
     </div>);
 
 
-const AddUserForm = ({onSubmit}) => {
+const AddUserForm = ({onSubmitFunc}) => {
     const [newUser, setNewUser] = React.useState(
     {
         firstName: '',
         lastName: '',
-        phone: ''
+        phone: '',
     });
     return (
         <form
             onSubmit={ event => {
                 event.preventDefault();
-                onSubmit({...newUser, id:Date.now()});
+                onSubmitFunc({...newUser, id:Date.now()});
             }}
         >
-            <input placeholder='First Name' onChange={event => setNewUser({ ...newUser, firstName: event.target.value })} />
-            <input placeholder='Last Name'  onChange={event => setNewUser({ ...newUser, lastName: event.target.value })}  />
-            <input placeholder='Phone'      onChange={event => setNewUser({ ...newUser, phone: event.target.value })}     />
+            <input placeholder='First Name' onChange={event => newUser.firstName = event.target.value } />
+            <input placeholder='Last Name'  onChange={event => newUser.lastName = event.target.value }  />
+            <input placeholder='Phone'      onChange={event => newUser.phone =event.target.value }     />
             <br/><button type="submit">Add User</button>
         </form>
     );
@@ -70,9 +70,11 @@ const App = () => {
     return (
         <div>
            <h2>Home Task #1</h2>
-           <UserList  users={users} />
+           <UserList  userList={users} />
            <h3>Enter new user data</h3>
-           <AddUserForm onSubmit={ newUser => setUsers([...users, newUser]) }/>
+           <AddUserForm onSubmitFunc={ 
+               newUser => setUsers([...users, newUser]) 
+               }/>
         </div>
     );
 }
