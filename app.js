@@ -57,9 +57,9 @@ const AddUserForm = ({onSubmitFunc}) => {
                 onSubmitFunc({...newUser, id:Date.now()});
             }}
         >
-            <input placeholder='First Name' onChange={event => newUser.firstName = event.target.value } />
-            <input placeholder='Last Name'  onChange={event => newUser.lastName = event.target.value }  />
-            <input placeholder='Phone'      onChange={event => newUser.phone =event.target.value }     />
+            <input placeholder='First Name' onChange={event => setNewUser({ ...newUser, firstName: event.target.value })} />
+            <input placeholder='Last Name'  onChange={event => setNewUser({ ...newUser, lastName: event.target.value })}  />
+            <input placeholder='Phone'      onChange={event => setNewUser({ ...newUser, phone: event.target.value })}     />
             <br/><button type="submit">Add User</button>
         </form>
     );
