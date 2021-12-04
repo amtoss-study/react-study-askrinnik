@@ -1,7 +1,13 @@
 import { User } from "types";
 import UserControl from "components/UserControl";
 
-const UserList = ({ userList, removeUser }: { userList: User[], removeUser: (id: number) => void }) => (
+const UserList = ({
+    userList,
+    removeUser,
+}: {
+    userList: User[];
+    removeUser: (id: number) => void;
+}) => (
     <div>
         <h3>Users</h3>
         <table>
@@ -14,11 +20,16 @@ const UserList = ({ userList, removeUser }: { userList: User[], removeUser: (id:
                 </tr>
             </thead>
             <tbody>
-                {
-                    userList.map(item => <UserControl key={item.id} user={item} removeUser={removeUser} />)
-                }
+                {userList.map((item) => (
+                    <UserControl
+                        key={item.id}
+                        user={item}
+                        removeUser={removeUser}
+                    />
+                ))}
             </tbody>
         </table>
-    </div>);
+    </div>
+);
 
 export default UserList;
