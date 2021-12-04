@@ -1,8 +1,11 @@
 import React from "react";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+
 import "./App.css";
 import { User } from "types";
-import AddUserForm from "components/AddUserForm";
-import UserList from "components/UserList";
+import Home from "routes/Home";
+import Nav from "routes/Nav";
+import Users from "routes/Users";
 
 const initUsers: User[] = [
     {
@@ -22,18 +25,17 @@ const initUsers: User[] = [
 const App = () => {
     const [users, setUsers] = React.useState<User[]>(initUsers);
     return (
-        <div>
-            <h2>Home Task #2</h2>
-            <AddUserForm
-                onSubmitFunc={(newUser) => setUsers([...users, newUser])}
-            />
-            <UserList
-                userList={users}
-                removeUser={(id) =>
-                    setUsers(users.filter((user) => user.id !== id))
-                }
-            />
-        </div>
+        <Router>
+            <Nav />
+            <Switch>
+                <Route path="/users" exact={true}>
+                    <Users users={users} setUsers={setUsers} />
+                </Route>
+                <Route path="/">
+                    <Home />
+                </Route>
+            </Switch>
+        </Router>
     );
 };
 
