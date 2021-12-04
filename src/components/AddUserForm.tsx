@@ -1,5 +1,5 @@
 import React from "react";
-import { User } from "../types";
+import { User } from "types";
 
 const AddUserForm = ({ onSubmitFunc }: { onSubmitFunc: (user: User) => void }) => {
     const [newUser, setNewUser] = React.useState<User>(

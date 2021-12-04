@@ -1,8 +1,8 @@
 import React from 'react';
 import './App.css';
-import { User } from './types';
-import UserList from './components/UserList';
-import AddUserForm from './components/AddUserForm';
+import { User } from 'types';
+import AddUserForm from 'components/AddUserForm';
+import UserList from 'components/UserList';
 
 const initUsers: User[] =
     [

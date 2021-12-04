@@ -1,5 +1,5 @@
-import { User } from "../types";
-import UserControl from "./UserControl";
+import { User } from "types";
+import UserControl from "components/UserControl";
 
 const UserList = ({ userList, removeUser }: { userList: User[], removeUser: (id: number) => void }) => (
     <div>

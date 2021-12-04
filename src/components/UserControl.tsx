@@ -1,4 +1,4 @@
-import { User } from "../types";
+import { User } from "types";
 
 const UserControl = ({ user, removeUser }:{user:User, removeUser: (id: number) => void}) => (
     <tr>
