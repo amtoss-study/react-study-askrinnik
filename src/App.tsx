@@ -6,27 +6,11 @@ import { User } from "types";
 import Home from "routes/Home";
 import Nav from "routes/Nav";
 import Users from "routes/Users";
-import UserContext from "UserContext";
-
-const initUsers: User[] = [
-    {
-        id: 0,
-        firstName: "Ivan",
-        lastName: "Ivanov",
-        phone: "(050) 653-9041",
-    },
-    {
-        id: 1,
-        firstName: "Petro",
-        lastName: "Petrov",
-        phone: "(097) 653-9041",
-    },
-];
+import { UserContextProvider } from "UserContext";
 
 const App = () => {
-    const [users, setUsers] = React.useState<User[]>(initUsers);
     return (
-        <UserContext.Provider value={{ users, setUsers }}>
+        <UserContextProvider>
             <Router>
                 <Nav />
                 <Switch>
@@ -34,7 +18,7 @@ const App = () => {
                     <Route path="/" component={Home} />
                 </Switch>
             </Router>
-        </UserContext.Provider>
+        </UserContextProvider>
     );
 };
 
