@@ -1,7 +1,7 @@
 import AddUserForm from "components/AddUserForm";
 import UserList from "components/UserList";
 
-const Users = () => {
+const List = () => {
     return (
         <>
             <AddUserForm />
@@ -10,4 +10,4 @@ const Users = () => {
     );
 };
 
-export default Users;
+export default List;
