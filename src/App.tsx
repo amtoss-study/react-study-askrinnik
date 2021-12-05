@@ -6,6 +6,7 @@ import { User } from "types";
 import Home from "routes/Home";
 import Nav from "routes/Nav";
 import Users from "routes/Users";
+import UserContext from "UserContext";
 
 const initUsers: User[] = [
     {
@@ -25,17 +26,15 @@ const initUsers: User[] = [
 const App = () => {
     const [users, setUsers] = React.useState<User[]>(initUsers);
     return (
-        <Router>
-            <Nav />
-            <Switch>
-                <Route path="/users" exact={true}>
-                    <Users users={users} setUsers={setUsers} />
-                </Route>
-                <Route path="/">
-                    <Home />
-                </Route>
-            </Switch>
-        </Router>
+        <UserContext.Provider value={{ users, setUsers }}>
+            <Router>
+                <Nav />
+                <Switch>
+                    <Route path="/users" component={Users} />
+                    <Route path="/" component={Home} />
+                </Switch>
+            </Router>
+        </UserContext.Provider>
     );
 };
 
