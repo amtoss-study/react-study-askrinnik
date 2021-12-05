@@ -1,9 +1,8 @@
 import UserControl from "components/UserControl";
-import UserContext from "UserContext";
-import React from "react";
+import useUsers from "hooks/useUsers";
 
-const UserList = ({ removeUser }: { removeUser: (id: number) => void }) => {
-    const { users } = React.useContext(UserContext);
+const UserList = () => {
+    const { users, removeUser } = useUsers();
     return (
         <div>
             <h3>Users</h3>

@@ -1,11 +1,9 @@
+import useUsers from "hooks/useUsers";
 import React from "react";
 import { User } from "types";
 
-const AddUserForm = ({
-    onSubmitFunc,
-}: {
-    onSubmitFunc: (user: User) => void;
-}) => {
+const AddUserForm = () => {
+    const { addUser } = useUsers();
     const [newUser, setNewUser] = React.useState<User>({
         id: 0,
         firstName: "",
@@ -18,7 +16,7 @@ const AddUserForm = ({
             <form
                 onSubmit={(event) => {
                     event.preventDefault();
-                    onSubmitFunc({ ...newUser, id: Date.now() });
+                    addUser(newUser);
                 }}
             >
                 <input
