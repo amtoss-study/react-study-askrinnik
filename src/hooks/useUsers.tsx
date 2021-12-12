@@ -16,8 +16,10 @@ const useUsers = () => {
     const removeUser = (id: number) =>
         setUsers(users.filter((user) => user.id !== id));
 
-    const updateUser = (user: User) =>
-        setUsers(users.map((u) => (u.id === user.id ? user : u)));
+    const updateUser = (user: User) => {
+        api.put(`${apiEndpoint}/${user.id}`, user).then((updatedUser: User) =>
+            setUsers(users.map((u) => (u.id === user.id ? updatedUser : u))));
+    }
 
     const getUser = (id: number) => users.find((user) => user.id === id);
 
