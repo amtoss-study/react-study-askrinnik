@@ -21,11 +21,11 @@ const useUsers = () => {
 
     const getUser = (id: number) => users.find((user) => user.id === id);
 
-    const fetchUser = useCallback( (id: number) => {
+    const fetchUser = useCallback((id: number) => {
         // const user = getUser(id);
         // if( user === undefined)
-            api.get(`${apiEndpoint}/${id}`).then((data: User) => setUsers( prevUsers => [...prevUsers, data]));
-    }, [setUsers] );
+        api.get(`${apiEndpoint}/${id}`).then((data: User) => setUsers(prevUsers => [...prevUsers.filter( u => u.id !== id), data]));
+    }, [setUsers]);
 
     const retrieveUsers = useCallback(
         () => api.get(apiEndpoint).then((data: User[]) => setUsers(data)),
