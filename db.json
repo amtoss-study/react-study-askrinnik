@@ -1,0 +1,16 @@
+{
+  "users": [
+    {
+      "id": 0,
+      "firstName": "Ivan",
+      "lastName": "Ivanov",
+      "phone": "(050) 653-9041"
+    },
+    {
+      "id": 1,
+      "firstName": "Petro",
+      "lastName": "Petrov",
+      "phone": "(097) 653-9041"
+    }
+  ]
+}
