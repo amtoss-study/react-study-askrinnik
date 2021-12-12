@@ -1,8 +1,14 @@
 import UserControl from "components/UserControl";
 import useUsers from "hooks/useUsers";
+import { useEffect } from "react";
 
 const UserList = () => {
-    const { users, removeUser } = useUsers();
+    const { users, removeUser, retrieveUsers } = useUsers();
+
+    useEffect(() => {
+        retrieveUsers();
+    }, [retrieveUsers]);
+
     return (
         <div>
             <h3>Users</h3>
