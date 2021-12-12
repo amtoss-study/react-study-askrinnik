@@ -3,7 +3,7 @@ import { User } from "types";
 
 type UserContextType = {
     users: User[];
-    setUsers: (users: User[] | ((prevUsers:User[]) => User[])) => void;
+    setUsers: (users: User[] | ((prevUsers: User[]) => User[])) => void;
 };
 
 const UserContext = React.createContext<UserContextType>({
