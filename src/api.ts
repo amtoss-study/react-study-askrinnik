@@ -18,6 +18,11 @@ const post = (url: string, requestData: Record<string, any>) =>
 const put = (url: string, requestData: Record<string, any>) =>
     postOrPut(url, "PUT", requestData);
 
-const api = { get, post, put };
+const del = (url: string) =>
+    fetch(`${baseUrl}${url}`, { method: "DELETE" }).then((response) =>
+        response.json()
+    );
+
+const api = { get, post, put, del };
 
 export default api;
