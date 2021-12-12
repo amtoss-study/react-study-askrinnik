@@ -13,9 +13,11 @@ const useUsers = () => {
         );
     };
 
-    const removeUser = (id: number) =>
-        api.del(`${apiEndpoint}/${id}`).then((updatedUser: User) =>
-            setUsers(users.filter((user) => user.id !== id)));
+    const removeUser = (id: number) => {
+        setUsers(users.filter((user) => user.id !== id));
+        api.del(`${apiEndpoint}/${id}`)
+            .catch(() => setUsers(users));
+    };
 
     const updateUser = (user: User) => 
         api.put(`${apiEndpoint}/${user.id}`, user).then((updatedUser: User) =>
